@@ -10,7 +10,8 @@ cases %>%
   ggplot() +
   geom_col(aes(Date, New_cases), width=0.5) +
   geom_line(aes(Date, Total_cases/multiplier), size=1, colour="deeppink2") +
-  scale_y_continuous("New Cases", sec.axis = sec_axis(trans=~.*multiplier, name = "Total Cases"))
+  scale_y_continuous("New Cases", sec.axis = sec_axis(trans=~.*multiplier, name = "Total Cases")) +
+  theme_classic()
 
 deaths <- read_csv('deaths.csv') %>%
   mutate(Date = dmy(Date))
@@ -21,4 +22,5 @@ deaths %>%
   ggplot() +
   geom_col(aes(Date, New_deaths), width=0.5) +
   geom_line(aes(Date, Total_deaths/multiplier), size=1, colour="deeppink2") +
-  scale_y_continuous("New Deaths", sec.axis = sec_axis(trans=~.*multiplier, name = "Total Deaths"))
+  scale_y_continuous("New Deaths", sec.axis = sec_axis(trans=~.*multiplier, name = "Total Deaths")) +
+  theme_classic()

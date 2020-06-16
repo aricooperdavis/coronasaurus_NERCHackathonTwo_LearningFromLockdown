@@ -7,7 +7,7 @@ The unprecedented global response to the COVID-19 pandemic has resulted in huge 
 One particular area of interest is the impact on greenhouse gas emissions. As a signatory of the Paris Agreement the UK has a responsibility to limit the global average temperature rise to below 2&deg;C, but this is an ambitious task! Can we use data from this event to evaluate the sort of changes that might need to be made to meet these climate goals?
 
 ## The brief
-![alt text](https://i2.wp.com/digitalenvironment.org/wp-content/uploads/2020/05/covid-19_banner-800.png?w=800&ssl=1)
+[![alt text](https://i2.wp.com/digitalenvironment.org/wp-content/uploads/2020/05/covid-19_banner-800.png?w=800&ssl=1)](https://digitalenvironment.org/home/covid-19-digital-sprint-hackathons/)
 
 This is an entry for [COVID-19 Hackathon 2: Recovery](https://digitalenvironment.org/home/covid-19-digital-sprint-hackathons/covid-19-hackathon-2-recovery/), run by the Natural Environment Research Council on behalf of UKRI. The brief is:
 
@@ -22,4 +22,6 @@ We need to build a narrative here.
 ### Presentation
 
 ### Interactive notebook
-You can "play along" online with our analysis using our interactive binder notebook, or download it and run it locally using `jupyter`.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Fpresentation%2Fpresentation.ipynb)
+
+You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can download the notebook and run it locally using `jupyter`.

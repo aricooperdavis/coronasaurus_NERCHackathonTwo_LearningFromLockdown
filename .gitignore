@@ -33,3 +33,10 @@ Thumbs.db
 # JupyterLab #
 ##############
 .ipynb_checkpoints
+
+# R #
+#####
+.RData
+.Rhistory
+.Rproj.user/
+

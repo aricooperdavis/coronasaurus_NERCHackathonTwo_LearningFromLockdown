@@ -1,4 +1,4 @@
-![RAWR!](https://github.com/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/tree/master/images/coronosaurus_logo.png)
+![RAWR](images/coronasaurus_logo.png)
 This repository is coronasaurus's entry to NERC's [COVID-19 Hackathon 2: Recovery](https://digitalenvironment.org/home/covid-19-digital-sprint-hackathons/covid-19-hackathon-2-recovery/).
 
 ## Introduction

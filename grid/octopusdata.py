@@ -58,7 +58,7 @@ class OctopusData:
         
         fig, ax1 = plt.subplots(figsize=figsize)
 
-        electricity_mean = ax1.plot(self.energy_average['Date_'], 10*np.ones(len(self.energy_average)), c=colors[0], linestyle='dashed', linewidth=2)
+        electricity_mean = ax1.plot(self.energy_average['Date_'], 12*np.ones(len(self.energy_average)), c=colors[0], linestyle='dashed', linewidth=2)
         electricity = ax1.plot(self.energy_average['Date_'], self.energy_average['electricity_daily_total'], c=colors[0], linewidth=2)
         
         ax1.tick_params(axis='y', labelcolor=colors[0])
@@ -77,9 +77,9 @@ class OctopusData:
             plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['electricity_daily_total'], self.energy_average['temperature'])[0,1]), 
                      ha='center', va='center', transform=ax2.transAxes)
             
-            plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (high)', 'Temperature'], loc=1)
+            plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)', 'Temperature'], loc=1)
         else:
-            plt.legend([electricity[0], electricity_mean[0]], ['Mean of 115 000 UK households', 'Typical domestic use (high)'], loc=1)
+            plt.legend([electricity[0], electricity_mean[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)'], loc=1)
             
         fig.tight_layout()
         plt.show()
@@ -87,7 +87,7 @@ class OctopusData:
     def plot_daily_electricity_bkh(self, figsize=(600,300), plot_temperature=False, colors=['black', 'darkturquoise']):
         p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
 
-        p.line(x=self.energy_average['Date_'], y=10*np.ones(len(self.energy_average)), line_dash='dashed', line_color=colors[0], legend_label='Typical domestic use')
+        p.line(x=self.energy_average['Date_'], y=12*np.ones(len(self.energy_average)), line_dash='dashed', line_color=colors[0], legend_label='Typical domestic use')
         
         p.line(x=self.energy_average['Date_'], y=self.energy_average['electricity_daily_total'], line_color=colors[0], legend_label='Mean of 115,000 UK households')
         

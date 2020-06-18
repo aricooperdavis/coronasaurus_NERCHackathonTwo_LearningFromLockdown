@@ -96,7 +96,7 @@ class OctopusData:
         p.xaxis.axis_label='Date'
         p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
         
-        p.y_range=bkm.Range1d(9, 15)
+        p.y_range=bkm.Range1d(9, 17)
         p.yaxis.axis_label='Electricity Consumption (kWh)'
         p.yaxis.axis_label_text_color = colors[0]
         
@@ -116,6 +116,7 @@ class OctopusData:
             r = self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]
             p.legend.title = f'R = {r:.3f}'
             p.legend.location = 'top_left'
+            p.legend.background_fill_alpha = 1.0
             
         bkh.output_notebook()
         bkh.show(p)
@@ -162,7 +163,7 @@ class OctopusData:
         p.xaxis.axis_label='Date'
         p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
         
-        p.y_range=bkm.Range1d(15, 60)
+        p.y_range=bkm.Range1d(15, 70)
         p.yaxis.axis_label='Gas Consumption (Corrected) (kWh/ALP)'
         p.yaxis.axis_label_text_color = colors[0]
         
@@ -182,6 +183,7 @@ class OctopusData:
             r = self.energy_average[['gas_daily_total', 'temperature']].corr(method='pearson').values[1,0]
             p.legend.title = f'R = {r:.3f}'
             p.legend.location = 'top_left'
+            p.legend.background_fill_alpha = 1.0
             
         bkh.output_notebook()
         bkh.show(p)

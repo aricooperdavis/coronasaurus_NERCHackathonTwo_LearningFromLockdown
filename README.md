@@ -22,6 +22,6 @@ We need to build a narrative here.
 ### Presentation
 
 ### Interactive notebook
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Ftree%2Fpresentation%2Fpresentation.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Ftree%2Fcoronasaurus.ipynb)
 
 You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can download the notebook and run it locally using `jupyter`.

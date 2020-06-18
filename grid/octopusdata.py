@@ -96,6 +96,7 @@ class OctopusData:
         p.xaxis.axis_label='Date'
         p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
         
+        p.y_range=bkm.Range1d(9, 15)
         p.yaxis.axis_label='Electricity Consumption (kWh)'
         p.yaxis.axis_label_text_color = colors[0]
         
@@ -161,6 +162,7 @@ class OctopusData:
         p.xaxis.axis_label='Date'
         p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
         
+        p.y_range=bkm.Range1d(15, 60)
         p.yaxis.axis_label='Gas Consumption (Corrected) (kWh/ALP)'
         p.yaxis.axis_label_text_color = colors[0]
         

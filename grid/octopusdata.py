@@ -86,7 +86,7 @@ class OctopusData:
         fig.tight_layout()
         plt.show()
         
-    def plot_daily_electricity_bkh(self, figsize=(600,300), plot_temperature=False, colors=['black', 'darkturquoise']):
+    def plot_daily_electricity_bkh(self, figsize=(650,450), plot_temperature=False, colors=['black', 'darkturquoise']):
         p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
 
         p.line(x=self.energy_average['Date_'], y=12*np.ones(len(self.energy_average)), line_dash='dashed', line_color=colors[0], legend_label='Typical domestic use')
@@ -112,8 +112,9 @@ class OctopusData:
                                         minor_tick_line_color=colors[1]
                                        ), 'right')
             
-            #plt.text(0.05, 0.9, 'R = {0:.3f}'.format(self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]), 
-            #         ha='center', va='center', transform=ax2.transAxes)
+            r = self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]
+            p.legend.title = f'R = {r:.3f}'
+            p.legend.location = 'top_left'
             
         bkh.output_notebook()
         bkh.show(p)
@@ -149,3 +150,36 @@ class OctopusData:
             
         fig.tight_layout()
         plt.show()
+
+    def plot_daily_gas_bkh(self, figsize=(650,450), plot_temperature=False, colors=['black', 'darkturquoise']):
+        p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
+
+        p.line(x=self.energy_average['Date_'], y=32*np.ones(len(self.energy_average)), line_dash='dashed', line_color=colors[0], legend_label='Typical domestic use (medium)')
+        
+        p.line(x=self.energy_average['Date_'], y=self.energy_average['gas_daily_total'], line_color=colors[0], legend_label='Mean of 115,000 UK households')
+        
+        p.xaxis.axis_label='Date'
+        p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
+        
+        p.yaxis.axis_label='Gas Consumption (Corrected) (kWh/ALP)'
+        p.yaxis.axis_label_text_color = colors[0]
+        
+        if plot_temperature and self.weather_file:
+            p.extra_y_ranges = {'temperature': bkm.Range1d(start=6, end=24)}
+            
+            p.line(x=self.energy_average['Date_'],
+                   y=self.energy_average['temperature'],
+                   line_color=colors[1], legend_label='Temperature', y_range_name='temperature')
+            
+            p.add_layout(bkm.LinearAxis(y_range_name='temperature', axis_label='Mean Temperature (°C)',
+                                        axis_label_text_color=colors[1], axis_line_color=colors[1],
+                                        major_label_text_color=colors[1], major_tick_line_color=colors[1],
+                                        minor_tick_line_color=colors[1]
+                                       ), 'right')
+            
+            r = self.energy_average[['gas_daily_total', 'temperature']].corr(method='pearson').values[1,0]
+            p.legend.title = f'R = {r:.3f}'
+            p.legend.location = 'top_left'
+            
+        bkh.output_notebook()
+        bkh.show(p)

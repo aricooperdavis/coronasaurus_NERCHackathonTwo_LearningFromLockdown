@@ -15,9 +15,11 @@ class OctopusData:
         self.energy['Date'] = pd.to_datetime(self.energy['Date'], format='%Y-%m-%d %H:%M:%S')
         self.energy['Date_'] = self.energy.Date.dt.date
         
-        self.energy_average = self.energy.groupby('Date_').agg(electricity_daily_total = pd.NamedAgg('Electricity', np.sum),
-                                                               gas_daily_total = pd.NamedAgg('Gas (corrected)', np.sum)).reset_index()
+        self.energy_average = self.energy.groupby('Date_').agg(electricity_daily_total = pd.NamedAgg('Electricity', 'sum'),
+                                                               gas_daily_total = pd.NamedAgg('Gas (corrected)', 'sum')).reset_index()
         self.energy_average.drop(self.energy_average.tail(1).index, inplace=True)
+        cols = ['electricity_daily_total','gas_daily_total']
+        self.energy_average[cols] = self.energy_average[cols].replace({0.0: np.nan})
         
         if weather_file:
             weather = pd.read_csv(weather_file)
@@ -74,7 +76,7 @@ class OctopusData:
             
             ax2.tick_params(axis='y', labelcolor=colors[1])
             
-            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['electricity_daily_total'], self.energy_average['temperature'])[0,1]), 
+            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]), 
                      ha='center', va='center', transform=ax2.transAxes)
             
             plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)', 'Temperature'], loc=1)
@@ -110,7 +112,7 @@ class OctopusData:
                                         minor_tick_line_color=colors[1]
                                        ), 'right')
             
-            #plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['electricity_daily_total'], self.energy_average['temperature'])[0,1]), 
+            #plt.text(0.05, 0.9, 'R = {0:.3f}'.format(self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]), 
             #         ha='center', va='center', transform=ax2.transAxes)
             
         bkh.output_notebook()
@@ -138,7 +140,7 @@ class OctopusData:
             
             ax2.tick_params(axis='y', labelcolor=colors[1])
             
-            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['gas_daily_total'], self.energy_average['temperature'])[0,1]), 
+            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(self.energy_average[['gas_daily_total', 'temperature']].corr(method='pearson').values[1,0]), 
                      ha='center', va='center', transform=ax2.transAxes)
             
             plt.legend([gas[0], gas_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)', 'Temperature'], loc=1)

@@ -8,6 +8,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
+import bokeh.plotting as bkh
+
 class GridData:
     def __init__(self, grid_file):
         self.grid = pd.read_csv(grid_file)
@@ -54,6 +56,30 @@ class GridData:
         
         plt.tight_layout()
         plt.show()
+        
+    def plot_demand_bkh(self, collapse=True, color='black', figsize=(600,300)):
+        p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
+        colors = ['darkgreen','darkkhaki','darkmagenta','darksalmon','darkred','gold']
+        i = 0
+        
+        if collapse:
+            for year in np.unique(self.grid_average.YEAR.values):
+                p.line(self.grid_average.DOY[self.grid_average.YEAR.values==year],
+                       self.grid_average.DEMAND_AVERAGE[self.grid_average.YEAR.values==year],
+                       line_width=2, alpha=0.4+0.1*i, legend_label=str(year), color=colors[i])
+                i += 1
+                
+            p.xaxis.axis_label = 'Day of the Year'
+            
+        else:
+            p.line(self.grid_average.DATE, self.grid_average.DEMAND_AVERAGE, color=color)
+            p.xaxis.axis_label = 'Year'
+            
+        p.yaxis.axis_label = 'Demand (MW)'
+        
+        bkh.output_notebook()
+        bkh.show(p)
+        
         
     def load_model(self, model_file, forecast_limit=7):
         
@@ -123,6 +149,28 @@ class GridData:
         plt.legend()
         plt.tight_layout()
         plt.show()
+        
+    def plot_model_bkh(self, figsize=(600,300)):
+        
+        p = bkh.figure(plot_width=figsize[0], plot_height=figsize[1])
+        
+        p.varea(x=self.X_PREDICT.flatten()+2015,
+                y1=(self.Y_PREDICT_mean-self.Y_PREDICT_conf).flatten(),
+                y2=(self.Y_PREDICT_mean+self.Y_PREDICT_conf).flatten(),
+                alpha=0.2, legend_label='Confidence')
+        
+        p.line(self.X_PREDICT.flatten()+2015, self.Y_PREDICT_mean.flatten(), legend_label='Mean')
+        
+        p.x(self.X[:self.COVID_CUTOFF].flatten()+2015, self.Y[:self.COVID_CUTOFF].flatten(), color='black', alpha=0.5, legend_label='Before Lockdown')
+        
+        p.x(self.X[self.COVID_CUTOFF:].flatten()+2015, self.Y[self.COVID_CUTOFF:].flatten(), color='red', alpha=0.5, legend_label='After Lockdown')
+        
+        p.xaxis.axis_label = 'Year'
+        p.yaxis.axis_label = 'Net Demand (GW)'
+        
+        bkh.output_notebook()
+        bkh.show(p)
+        
         
     def plot_demand_discrepancy(self, figsize=(16,8), plot_confidence=True):
         

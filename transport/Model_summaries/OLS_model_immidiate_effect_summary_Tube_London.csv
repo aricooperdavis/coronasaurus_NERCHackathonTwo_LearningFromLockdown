@@ -1,0 +1,26 @@
+                      OLS Regression Results                      
+Dep. Variable:   ,Tube_London     ,  R-squared:         ,   0.996 
+Model:           ,OLS             ,  Adj. R-squared:    ,   0.996 
+Method:          ,Least Squares   ,  F-statistic:       ,   3167. 
+Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,1.04e-106
+Time:            ,20:56:26        ,  Log-Likelihood:    ,  255.82 
+No. Observations:,   100          ,  AIC:               ,  -495.6 
+Df Residuals:    ,    92          ,  BIC:               ,  -474.8 
+Df Model:        ,     7          ,                     ,         
+Covariance Type: ,nonrobust       ,                     ,         
+                        ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+Intercept               ,    0.8340,    0.011,   78.610, 0.000,    0.813,    0.855
+base_drift              ,   -0.0146,    0.002,   -8.924, 0.000,   -0.018,   -0.011
+first_restrictions_jump ,   -0.0745,    0.016,   -4.517, 0.000,   -0.107,   -0.042
+first_restrictions_drift,   -0.0485,    0.002,  -19.579, 0.000,   -0.053,   -0.044
+national_lockdown_jump  ,   -0.0146,    0.012,   -1.187, 0.238,   -0.039,    0.010
+national_lockdown_drift ,    0.0631,    0.002,   33.689, 0.000,    0.059,    0.067
+lockdown_easing_jump    ,    0.0025,    0.010,    0.266, 0.791,   -0.016,    0.022
+lockdown_easing_drift   ,    0.0022,    0.001,    4.100, 0.000,    0.001,    0.003
+Omnibus:      ,62.424,  Durbin-Watson:     ,   1.810
+Prob(Omnibus):, 0.000,  Jarque-Bera (JB):  , 422.757
+Skew:         , 1.869,  Prob(JB):          ,1.58e-92
+Kurtosis:     ,12.354,  Cond. No.          ,    757.
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

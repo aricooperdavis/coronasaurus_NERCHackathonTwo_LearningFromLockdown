@@ -58,7 +58,7 @@ class OctopusData:
             plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['electricity_daily_total'], self.energy_average['temperature'])[0,1]), 
                      ha='center', va='center', transform=ax2.transAxes)
             
-            plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Long term UK mean (high)', 'Temperature'], loc=1)
+            plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (high)', 'Temperature'], loc=1)
         else:
             plt.legend([electricity[0], electricity_mean[0]], ['Mean of 115 000 UK households', 'Typical domestic use (high)'], loc=1)
             
@@ -92,7 +92,7 @@ class OctopusData:
             
             plt.legend([gas[0], gas_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)', 'Temperature'], loc=1)
         else:
-            plt.legend([gas[0], gas_mean[0]], ['Mean of 115 000 UK households', 'Long term UK mean (medium)'], loc=1)
+            plt.legend([gas[0], gas_mean[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)'], loc=1)
             
         fig.tight_layout()
         plt.show()

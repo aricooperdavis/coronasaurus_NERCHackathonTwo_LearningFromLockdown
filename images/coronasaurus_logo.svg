@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="coronasaurus_logo.svg">
+   sodipodi:docname="coronasaurus_logo.svg"
+   inkscape:export-filename="/home/mikkel/OneDrive/coronasaurus/images/coronasaurus_logo.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs2">
     <clipPath
@@ -35,7 +38,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="506.44046"
+     inkscape:cx="331.17899"
      inkscape:cy="125.01042"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -57,7 +60,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

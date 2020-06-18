@@ -8,8 +8,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-import GPy
-
 class GridData:
     def __init__(self, grid_file):
         self.grid = pd.read_csv(grid_file)
@@ -59,6 +57,11 @@ class GridData:
         
     def load_model(self, model_file, forecast_limit=7):
         
+        try:
+            import GPy
+        except ModuleNotFoundError:
+            return
+        
         # Set the datapoint cutoff index for lockdown.
         self.COVID_CUTOFF = 1881
         
@@ -79,6 +82,27 @@ class GridData:
         
         # Predict the datapoints after the lockdown.
         self.Y_COVID_PREDICT_mean, self.Y_COVID_PREDICT_conf = self.model.predict(self.X_COVID)
+        
+    def load_model_output(self, output_file):
+        
+        # Set the datapoint cutoff index for lockdown.
+        self.COVID_CUTOFF = 1881
+        self.forecast_limit = 7
+        
+        # Open a pickled model.
+        with open(output_file, 'rb') as f:
+            self.output_dict = pickle.load(f)
+        
+        # Predict the model from 0 to the forecasting limit
+        self.X_PREDICT = self.output_dict['X_PREDICT']
+        self.Y_PREDICT_mean, self.Y_PREDICT_conf = self.output_dict['Y_PREDICT_mean'], self.output_dict['Y_PREDICT_conf']
+        
+        # Get the datapoints after the lockdown.
+        self.X_COVID = self.output_dict['X_COVID']
+        self.Y_COVID = self.output_dict['Y_COVID']
+        
+        # Predict the datapoints after the lockdown.
+        self.Y_COVID_PREDICT_mean, self.Y_COVID_PREDICT_conf = self.output_dict['Y_COVID_PREDICT_mean'], self.output_dict['Y_COVID_PREDICT_conf']
     
     def plot_model(self, figsize=(16,8)):
         

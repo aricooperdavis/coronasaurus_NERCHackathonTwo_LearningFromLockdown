@@ -36,25 +36,32 @@ You can "play along" online with our analysis using our interactive binder noteb
 > - society/ - data, code and output files examining society issues during Covid 19 pandemic.
 > - society/...ipynb/py - output files graphing and analysing social trends looking at inpact of lockdown on the UK population
 > - society/...csv - social data taken from:
->https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork \n
->https://data.london.gov.uk/dataset/london-community-response-survey \n
+
+>https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork 
+
+>https://data.london.gov.uk/dataset/london-community-response-survey 
+
 >https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandwellbeing/bulletins/coronavirusandthesocialimpactsongreatbritain/12june2020
 
 <b>Timeline</b>
->timeline/ - data, code and output files showing important events during the Covid 19 pandemic.
->timeline/...ipynb/py - timeline generators
->timeline/...csv - timeline data taken from:
+> - timeline/ - data, code and output files showing important events during the Covid 19 pandemic.
+> - timeline/...ipynb/py - timeline generators
+> - timeline/...csv - timeline data taken from:
+
 >https://en.wikipedia.org/wiki/Timeline_of_the_COVID-19_pandemic_in_the_United_Kingdom
+
 >https://appeasement.org/
 
 <b>Transport</b>
->transport/ - includes data sets, codes and output files and figures related to the effect of lockdown on traffic volume.
->transport/Traffic.py - includes class Traffic, which allow to import data and analyse them (see notebook).
->Transport/Figures - includes output figures produced by Traffic class methods
->Transport/Model_diagnostics - includes output graphs allowing to diagnose the interrupted linear models implemented in Traffic class
->Transport/Summary - includes csv files with summary of the interrupted linear models implemented in Traffic class (summary consist the goodness of fit and credibility intervals for all model parameters)
->Transport/UK_transport.csv - includes traffic volume data for different modes of transport from 
->https://www.gov.uk/government/statistics/transport-use-during-the-coronavirus-covid-19-pandemic.
->Transport/UK_weather.csv - includes daily weather data from:
+> - transport/ - includes data sets, codes and output files and figures related to the effect of lockdown on traffic volume.
+> - transport/Traffic.py - includes class Traffic, which allow to import data and analyse them (see notebook).
+> - Transport/Figures - includes output figures produced by Traffic class methods
+> - Transport/Model_diagnostics - includes output graphs allowing to diagnose the interrupted linear models implemented in Traffic class
+> - Transport/Summary - includes csv files with summary of the interrupted linear models implemented in Traffic class (summary consist the goodness of fit and credibility intervals for all model parameters)
+> - Transport/UK_transport.csv - includes traffic volume data for different modes of transport from https://www.gov.uk/government/statistics/transport-use-during-the-coronavirus-covid-19-pandemic.
+
+> - Transport/UK_weather.csv - includes daily weather data from:
+
 >https://www.accuweather.com/en/gb/london/ec4a-2/january-weather/328328 (daily data)
+
 >https://www.statista.com/statistics/322658/monthly-average-daily-temperatures-in-the-united-kingdom-uk/ (monthly averages)

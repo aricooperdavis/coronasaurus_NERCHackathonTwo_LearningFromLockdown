@@ -56,7 +56,7 @@ class Emissions():
         figures = []
         
         for i, sector in enumerate(sectors):
-            p = bkh.figure(title=sector+' CO₂ Emissions', plot_width=figsize[0], plot_height=figsize[1])
+            p = bkh.figure(x_axis_type='datetime', title=sector+' CO₂ Emissions', plot_width=figsize[0], plot_height=figsize[1])
         
             p.line(x=self.sector_co2['Date_'],
                    y=self.sector_co2[('value'+suffs[i])], color=colors[i])

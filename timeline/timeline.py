@@ -26,8 +26,8 @@ class TimelineData:
                 date_tooltip = [x.strftime("%d-%m-%Y") for x in self.timeline.Date],
                 y=np.zeros(len(self.timeline)),
                 headline=self.timeline.Headline,
-                colors=self.timeline.Transport.apply(lambda c: colors[c]),
-                transport=self.timeline.Transport.apply(lambda c: transport[c])
+                colors=self.timeline.Relevance.apply(lambda c: colors[c]),
+                transport=self.timeline.Relevance.apply(lambda c: transport[c])
             )
         )
         

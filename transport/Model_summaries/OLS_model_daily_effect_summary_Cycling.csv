@@ -1,0 +1,28 @@
+                      OLS Regression Results                     
+Dep. Variable:   ,Cycling         ,  R-squared:         ,   0.307
+Model:           ,OLS             ,  Adj. R-squared:    ,   0.249
+Method:          ,Least Squares   ,  F-statistic:       ,   5.317
+Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,4.63e-05
+Time:            ,20:56:30        ,  Log-Likelihood:    , -86.051
+No. Observations:,    92          ,  AIC:               ,   188.1
+Df Residuals:    ,    84          ,  BIC:               ,   208.3
+Df Model:        ,     7          ,                     ,        
+Covariance Type: ,nonrobust       ,                     ,        
+                        ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+Intercept               ,    1.1840,    0.540,    2.193, 0.031,    0.110,    2.258
+base_drift              ,    0.0810,    0.289,    0.281, 0.780,   -0.493,    0.655
+first_restrictions_jump ,   -0.1849,    0.682,   -0.271, 0.787,   -1.542,    1.172
+first_restrictions_drift,   -0.0810,    0.295,   -0.275, 0.784,   -0.668,    0.506
+national_lockdown_jump  ,   -0.6420,    3.207,   -0.200, 0.842,   -7.019,    5.735
+national_lockdown_drift ,   -0.0629,    0.289,   -0.218, 0.828,   -0.637,    0.511
+lockdown_easing_jump    ,   -2.9577,   14.720,   -0.201, 0.841,  -32.231,   26.315
+lockdown_easing_drift   ,   -0.1057,    0.289,   -0.366, 0.716,   -0.681,    0.469
+Omnibus:      , 8.481,  Durbin-Watson:     ,   1.464
+Prob(Omnibus):, 0.014,  Jarque-Bera (JB):  ,   8.132
+Skew:         , 0.691,  Prob(JB):          ,  0.0171
+Kurtosis:     , 3.460,  Cond. No.          ,1.17e+04
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.17e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

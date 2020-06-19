@@ -35,11 +35,15 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 ### Team Coronasaurus Contributors
 
-Cristina Corti - https://www.linkedin.com/in/cristina-corti-09a5b3137/?originalSubdomain=uk
-Ari Cooper-Davies - https://www.cooper-davis.net/
-Mikkel Lykkegaard - http://emps.exeter.ac.uk/engineering/staff/ml624
-Piotr Morawiecki - https://people.bath.ac.uk/pwm27/
-James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
+>Cristina Corti - https://www.linkedin.com/in/cristina-corti-09a5b3137/?originalSubdomain=uk
+
+>Ari Cooper-Davies - https://www.cooper-davis.net/
+
+>Mikkel Lykkegaard - http://emps.exeter.ac.uk/engineering/staff/ml624
+
+>Piotr Morawiecki - https://people.bath.ac.uk/pwm27/
+
+>James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
 
 ### Folders, Files and Directories
 

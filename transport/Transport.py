@@ -137,9 +137,9 @@ class Traffic:
         ax2 = plt.subplot2grid((2, 3), (0, 2))
         ax3 = plt.subplot2grid((2, 3), (1, 2))
 
-        ax1.stackplot(transport_emissions.Date, transport_emissions.Cars, transport_emissions.LCVs,
-                      transport_emissions.HGVs,
-                      transport_emissions.Rail, transport_emissions.Buses, labels=emissions_2019.vehicle)
+        ax1.stackplot(transport_emissions.Date, transport_emissions.Cars, transport_emissions.Buses,
+                      transport_emissions.LCVs,
+                      transport_emissions.HGVs, transport_emissions.Rail, labels=emissions_2019.vehicle)
         locator = mdates.AutoDateLocator(minticks=3, maxticks=7)
         formatter = mdates.DateFormatter('%d-%b')
         ax1.xaxis.set_major_locator(locator)

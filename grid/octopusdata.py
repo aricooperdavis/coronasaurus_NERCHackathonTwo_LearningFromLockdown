@@ -51,7 +51,7 @@ class OctopusData:
         
         p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
 
-        bkh.output_notebook()
+        #bkh.output_notebook()
         bkh.show(p)
 
     def plot_daily_electricity(self, figsize=(24,8), plot_temperature=False, colors=['k', 'darkturquoise']):
@@ -118,7 +118,7 @@ class OctopusData:
             p.legend.location = 'top_left'
             p.legend.background_fill_alpha = 1.0
             
-        bkh.output_notebook()
+        #bkh.output_notebook()
         bkh.show(p)
         
     def plot_daily_gas(self, figsize=(24,8), plot_temperature=False, colors=['k', 'darkturquoise']):
@@ -185,5 +185,5 @@ class OctopusData:
             p.legend.location = 'top_left'
             p.legend.background_fill_alpha = 1.0
             
-        bkh.output_notebook()
+        #bkh.output_notebook()
         bkh.show(p)

@@ -35,19 +35,15 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 ### Team Coronasaurus Contributors
 
->Cristina Corti - https://www.linkedin.com/in/cristina-corti-09a5b3137/?originalSubdomain=uk
-
->Ari Cooper-Davies - https://www.cooper-davis.net/
-
->Mikkel Lykkegaard - http://emps.exeter.ac.uk/engineering/staff/ml624
-
->Piotr Morawiecki - https://people.bath.ac.uk/pwm27/
-
->James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
+[*Cristina Corti*](https://www.linkedin.com/in/cristina-corti-09a5b3137/?originalSubdomain=uk)
+[*Ari Cooper-Davis*](https://www.cooper-davis.net/)
+[*Mikkel Lykkegaard*](http://emps.exeter.ac.uk/engineering/staff/ml624)
+[*Piotr Morawiecki*](https://people.bath.ac.uk/pwm27/)
+[*James Rand*](https://researchportal.bath.ac.uk/en/persons/james-rand)
 
 ### Folders, Files and Directories
 
-<b>emissions</b>
+<b>Emissions</b>
 > - emissions/ - CO2 emmissions data over lockdown period
 > - emissions/Figures_CO2.ipynb  - notebook analysing atmospheric CO2 during Covid 19 pandemic
 > - emissions/...csv - atmospheric CO2 data from:
@@ -56,7 +52,7 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 
 
-<b>covid</b>
+<b>Covid</b>
 > - covid/ - Rates of Infection and Death form Covid 19 in the UK.
 > - covid/Cases and Deaths.ipynb - notebook analysising rates of Infection and Death form Covid 19 in the UK.
 > - covid/...csv - Covid 19 data from:

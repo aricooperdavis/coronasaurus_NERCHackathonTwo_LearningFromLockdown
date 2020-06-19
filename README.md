@@ -40,6 +40,8 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 Alternatively, if you're in a hurry or want to build on our work, you can download the notebook and run it locally using `jupyter`.
 
+And if you're in a real hurry, don't care about interactivity, and just want to read our report, you can [do so here](https://github.com/aricooperdavis/coronasaurus_NERCHackathonTwo_LearningFromLockdown/blob/master/presentation/Coronasaurus.pdf) (but it's much much better as an interactive notebook!).
+
 ### Team Coronasaurus Contributors
 
 [*Cristina Corti*](https://www.linkedin.com/in/cristina-corti-09a5b3137/?originalSubdomain=uk)

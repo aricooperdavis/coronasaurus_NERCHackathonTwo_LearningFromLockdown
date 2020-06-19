@@ -30,11 +30,6 @@ In short, Team Coronasaurus has been examining if a 4 day working week (with pot
 
 You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can download the notebook and run it locally using `jupyter`.
 
-### Contributors
-
-Ari Cooper-Davies - https://www.cooper-davis.net/
-James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
-
 
 ### Folders, Files and Directories
 

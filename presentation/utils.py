@@ -2,9 +2,9 @@ from notebook import notebookapp
 from IPython.display import display, Markdown, HTML
 
 import pandas as pd
-from bokeh.plotting import figure, output_notebook, show
+from bokeh.plotting import figure, show
 
-def server_probe():
+def server_probe(): 
 
     servers = list(notebookapp.list_running_servers())
     
@@ -24,9 +24,6 @@ class EmissionsData:
         self.emissions = pd.read_csv(input_file)
         
     def plot(self, figsize=[750,400]):
-
-        # output for slides
-        output_notebook()
 
         p = figure(title="UK CO₂e Emissions & Targets", x_axis_label='Year', y_axis_label='Emissions MTCO₂e/Year', plot_width=figsize[0], plot_height=figsize[1])
         p.line(self.emissions['Year'], self.emissions['Historical emissions, excl forestry'], legend_label='Historical emissions, excl forestry', line_width=2, line_color='crimson')

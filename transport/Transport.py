@@ -53,11 +53,11 @@ class Traffic:
     diagnostics_directory = ''
     summary_directory = ''
 
-    def __init__(self):
+    def __init__(self, transport_file, weather_file):
 
         self.import_lockdown_phases()
-        self.import_transport_data()
-        self.import_weather_data()
+        self.import_transport_data(transport_file)
+        self.import_weather_data(weather_file)
         self.set_output_directories()
 
     def set_output_directories(self, figures_directory='Transport/Figures/',
@@ -97,9 +97,9 @@ class Traffic:
 
         self.transport = self.transport.merge(weather, left_on='Date', right_on='date')
 
-    def plot_transport_data(self, save=False):
+    def plot_transport_data(self, figsize=(10, 8), save=False):
 
-        fig, ax = plt.subplots(figsize=(10, 8), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
         for vehicle in self.vehicle_types:
             plt.plot(self.transport.Date, self.transport[vehicle], label=vehicle.replace("_", " "))
         ax.set_ylabel('Traffic')
@@ -112,7 +112,7 @@ class Traffic:
             fig.savefig(self.figures_directory + 'transport_timeline.png')
         plt.show()
 
-    def plot_CO2_emissions(self, save=False):
+    def plot_CO2_emissions(self, figsize=(16, 8), save=False):
 
         filled_transport = self.transport.interpolate().fillna(method='bfill').fillna(method='ffill')
         filled_transport["Bus"] = (filled_transport.Bus_London + filled_transport.Bus_Others) / 2
@@ -127,7 +127,7 @@ class Traffic:
                                             'HGVs': filled_transport.HGV * emissions_2019.CO2[3],
                                             'Rail': filled_transport.National_rail * emissions_2019.CO2[4]})
 
-        fig = plt.figure(figsize=(16, 8), dpi=80, facecolor='w', edgecolor='k')
+        fig = plt.figure(figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
 
         fig.tight_layout()
         fig.subplots_adjust(hspace=0.2)
@@ -269,12 +269,12 @@ class Traffic:
 
         return parameters_summary
 
-    def run_interrupted_LM(self, vehicle_types=None, save=False):
+    def run_interrupted_LM(self, vehicle_types=None, figsize=(16, 12), save=False):
 
         immediate_effects_summary = self.estimate_effects(plotting=False, immediate=True, vehicle_types=vehicle_types)
         daily_effects_summary = self.estimate_effects(plotting=True, immediate=False, vehicle_types=vehicle_types)
 
-        figure, axes = plt.subplots(3, 2, figsize=(16, 12), dpi=80, facecolor='w', edgecolor='k')
+        figure, axes = plt.subplots(3, 2, figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
         figure.tight_layout()
         figure.subplots_adjust(hspace=0.2)
         figure.subplots_adjust(wspace=0.2)
@@ -307,7 +307,7 @@ class Traffic:
             figure.savefig(self.figures_directory + 'interrupted_linear_model_parameters.png')
         plt.show()
 
-    def run_mixed_LM_for_bikes(self, save=False):
+    def run_mixed_LM_for_bikes(self,  figsize=(16, 12), save=False):
 
         self.transport["base_drift"] = (self.transport.Date - self.lockdown_phases.date[0]) / np.timedelta64(1, 'D')
         self.transport["base_drift"] = self.transport["base_drift"].astype(int)
@@ -349,7 +349,7 @@ class Traffic:
         data = self.transport[vehicle]
         date = self.transport["Date"]
 
-        fig, ax = plt.subplots(1, 2, figsize=(13, 4), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(1, 2, figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
         fig.tight_layout()
         fig.subplots_adjust(wspace=0.4)
 

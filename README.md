@@ -33,11 +33,11 @@ You can "play along" online with our analysis using our interactive binder noteb
 ### Folders, Files and Directories
 
 <b>Society</b>
->society/ - data, code and output files examining society issues during Covid 19 pandemic.
->society/...ipynb/py - output files graphing and analysing social trends looking at inpact of lockdown on the UK population
->society/...csv - social data taken from:
->https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork
->https://data.london.gov.uk/dataset/london-community-response-survey
+> - society/ - data, code and output files examining society issues during Covid 19 pandemic.
+> - society/...ipynb/py - output files graphing and analysing social trends looking at inpact of lockdown on the UK population
+> - society/...csv - social data taken from:
+>https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork \n
+>https://data.london.gov.uk/dataset/london-community-response-survey \n
 >https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandwellbeing/bulletins/coronavirusandthesocialimpactsongreatbritain/12june2020
 
 <b>Timeline</b>

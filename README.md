@@ -32,6 +32,28 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 ### Folders, Files and Directories
 
+<b>Grid</b>
+> - grid/ Gas and Electrical Energy Consumption (domestic and commercial), Forecasting and Generation
+> - grid/octopus - all data downloaded from Octopus energy supply company
+> - grid/Electricity and Gas.ipynb - notebook detailing consumption of gas and electricity during Covid 19 pandemic
+> - grid/Grid Demand.ipynb - notebook detailing gas and electricity demand from the national grid during Covid 19 pandemic 
+> - grid/...p/py/png - supporting graphics and tools
+> - grid/...csv - electrical and gas data and taken from:
+
+>https://demandforecast.nationalgrid.com/efs_demand_forecast/faces/DataExplorer
+
+>https://tech.octopus.energy/data-discourse/2020-social-distancing/index.html
+
+>https://www.ofgem.gov.uk/gas/retail-market/monitoring-data-and-statistics/typical-domestic-consumption-values
+
+
+
+<b>Presentation</b> 	
+> - presentation/ - Interactive Team Coronasaurus Presentation
+> - presentation/...py/csv/png/html supporting files. Data from all other folders.
+
+
+
 <b>Society</b>
 > - society/ - data, code and output files examining society issues during Covid 19 pandemic.
 > - society/...ipynb/py - output files graphing and analysing social trends looking at inpact of lockdown on the UK population
@@ -43,6 +65,8 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 >https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandwellbeing/bulletins/coronavirusandthesocialimpactsongreatbritain/12june2020
 
+
+
 <b>Timeline</b>
 > - timeline/ - data, code and output files showing important events during the Covid 19 pandemic.
 > - timeline/...ipynb/py - timeline generators
@@ -52,13 +76,17 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 >https://appeasement.org/
 
+
+
 <b>Transport</b>
 > - transport/ - includes data sets, codes and output files and figures related to the effect of lockdown on traffic volume.
 > - transport/Traffic.py - includes class Traffic, which allow to import data and analyse them (see notebook).
 > - Transport/Figures - includes output figures produced by Traffic class methods
 > - Transport/Model_diagnostics - includes output graphs allowing to diagnose the interrupted linear models implemented in Traffic class
 > - Transport/Summary - includes csv files with summary of the interrupted linear models implemented in Traffic class (summary consist the goodness of fit and credibility intervals for all model parameters)
-> - Transport/UK_transport.csv - includes traffic volume data for different modes of transport from https://www.gov.uk/government/statistics/transport-use-during-the-coronavirus-covid-19-pandemic.
+> - Transport/..UK_transport.csv - includes traffic volume data for different modes of transport from: 
+
+>https://www.gov.uk/government/statistics/transport-use-during-the-coronavirus-covid-19-pandemic.
 
 > - Transport/UK_weather.csv - includes daily weather data from:
 

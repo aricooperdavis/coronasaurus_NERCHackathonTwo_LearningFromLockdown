@@ -30,12 +30,18 @@ In short, Team Coronasaurus has been examining if a 4 day working week (with pot
 
 You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can download the notebook and run it locally using `jupyter`.
 
+### Contributors
+
+Ari Cooper-Davies - https://www.cooper-davis.net/
+James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
+
+
 ### Folders, Files and Directories
 
-<b>Emissions</b>
-> - Emissions/ - CO2 emmissions data over lockdown period
-> - Emissions/Figures_CO2.ipynb  - notebook analysing atmospheric CO2 during Covid 19 pandemic
-> - Emissions/...csv - atmospheric CO2 data from:
+<b>emissions</b>
+> - emissions/ - CO2 emmissions data over lockdown period
+> - emissions/Figures_CO2.ipynb  - notebook analysing atmospheric CO2 during Covid 19 pandemic
+> - emissions/...csv - atmospheric CO2 data from:
 
 >Quere et al (2020) https://www.nature.com/articles/s41558-020-0797-x
 

@@ -32,6 +32,28 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 ### Folders, Files and Directories
 
+<b>Emissions</b>
+> - Emissions/ - CO2 emmissions data over lockdown period
+> - Emissions/Figures_CO2.ipynb  - notebook analysing atmospheric CO2 during Covid 19 pandemic
+> - Emissions/...csv - atmospheric CO2 data from:
+
+>Quere et al (2020) https://www.nature.com/articles/s41558-020-0797-x
+
+
+
+<b>covid</b>
+> - covid/ - Rates of Infection and Death form Covid 19 in the UK.
+> - covid/Cases and Deaths.ipynb - notbook analysising rates of Infection and Death form Covid 19 in the UK.
+> - covid/...csv - Covid 19 data from:
+
+>https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases
+
+
+<b>Fuel</b> 
+> - fuel/ - Examining the retail price Petrol and Diesel fuel and the associated fuel duty during the Covid 19 pandemic (fuel not used in analysis).
+
+
+
 <b>Grid</b>
 > - grid/ Gas and Electrical Energy Consumption (domestic and commercial), Forecasting and Generation
 > - grid/octopus - all data downloaded from Octopus energy supply company

@@ -1,5 +1,7 @@
 import bokeh.plotting as bkh
 import bokeh.models as bkm
+import bokeh.layouts as bkl
+
 import pandas as pd
 import datetime
 
@@ -12,6 +14,10 @@ class Emissions():
         self.country_co2 = df
         
         self.global_co2 = pd.read_csv('GlobalDailyCO2.csv',skiprows=4)
+        
+        df = pd.read_csv('globalemissions_sector.csv',skiprows=4)[:163]
+        df['Date_'] = pd.to_datetime(df['date'], format='%d/%m/%Y')
+        self.sector_co2 = df
         
     def plot_uk_daily(self, figsize=(600,300), color='firebrick'):
         p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
@@ -42,3 +48,28 @@ class Emissions():
         p.legend.location = 'bottom_right'
 
         bkh.show(p)
+        
+    def plot_sector(self, figsize=(600,300), colors=['royalblue', 'firebrick', 'darkgreen', 'gold', 'violet', 'gray']):
+        
+        sectors = ['Power', 'Industry', 'Transport', 'Public', 'Residential', 'Aviation']
+        suffs = ['', '.1', '.2', '.3', '.4', '.5']
+        figures = []
+        
+        for i, sector in enumerate(sectors):
+            p = bkh.figure(title=sector+' CO₂ Emissions', plot_width=figsize[0], plot_height=figsize[1])
+        
+            p.line(x=self.sector_co2['Date_'],
+                   y=self.sector_co2[('value'+suffs[i])], color=colors[i])
+        
+            p.varea(x=self.sector_co2['Date_'],
+                    y1=self.sector_co2[('low uncertainty'+suffs[i])],
+                    y2=self.sector_co2[('high uncertainty'+suffs[i])],
+                    alpha=0.2, color=colors[i])
+
+            p.yaxis.axis_label = 'Decrease in CO₂ Emissions [%]'
+            p.xaxis.axis_label = 'Year'
+            
+            figures.append(p)
+
+        layout = bkl.layout([figures[:3], figures[3:]])
+        bkh.show(layout)

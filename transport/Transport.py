@@ -102,7 +102,7 @@ class Traffic:
         fig, ax = plt.subplots(figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
         for vehicle in self.vehicle_types:
             plt.plot(self.transport.Date, self.transport[vehicle], label=vehicle.replace("_", " "))
-        ax.set_ylabel('Traffic')
+        ax.set_ylabel('Relative Traffic Load')
         locator = mdates.AutoDateLocator(minticks=3, maxticks=7)
         formatter = mdates.DateFormatter('%d-%b')
         ax.xaxis.set_major_locator(locator)
@@ -199,12 +199,10 @@ class Traffic:
                                                                   [i + '_high' for i in covariates],
                                                                   [i + '_low' for i in covariates])))
 
-        grid_rows = ceil(len(vehicle_types) / 3)
-        figure, axes = plt.subplots(grid_rows, 3, figsize=(15, 4 * grid_rows), dpi=80, facecolor='w', edgecolor='k')
-        x = 0
-        y = 0
+        grid_rows = len(vehicle_types)
+        figure, axes = plt.subplots(1, grid_rows, figsize=(22, 3), dpi=80, facecolor='w', edgecolor='k')
 
-        for vehicle in vehicle_types:
+        for i, vehicle in enumerate(vehicle_types):
 
             missing_entries = 0
             formula = vehicle + " ~ " + covariates[1]
@@ -239,26 +237,16 @@ class Traffic:
             date = self.transport["Date"][np.isfinite(self.transport[vehicle])]
             run_diagnostics(data, predictions, model, self.diagnostics_directory + vehicle + '_ILM_diagnostics.png')
 
-            axes[x, y].plot(date, data, label="Data")
-            axes[x, y].plot(date, predictions, label="Model")
-            axes[x, y].set_title('Interrupted linear model (' + vehicle.replace("_", " ") + ')')
-            axes[x, y].set_ylabel('Traffic')
+            axes[i].plot(date, data, label="Data")
+            axes[i].plot(date, predictions, label="Model")
+            axes[i].set_title(vehicle.replace("_", " "))
+            if i == 0:
+                axes[i].set_ylabel('Relative Traffic Load')
             locator = mdates.AutoDateLocator(minticks=3, maxticks=7)
             formatter = mdates.DateFormatter('%d-%b')
-            axes[x, y].xaxis.set_major_locator(locator)
-            axes[x, y].xaxis.set_major_formatter(formatter)
-            axes[x, y].legend()
-
-            y = y + 1
-            if y == 3:
-                y = 0
-                x = x + 1
-
-        while y > 0:
-            axes[x, y].axis('off')
-            y = y + 1
-            if y == 3:
-                y = 0
+            axes[i].xaxis.set_major_locator(locator)
+            axes[i].xaxis.set_major_formatter(formatter)
+            axes[i].legend()
 
         if plotting:
             if save:
@@ -274,34 +262,38 @@ class Traffic:
         immediate_effects_summary = self.estimate_effects(plotting=False, immediate=True, vehicle_types=vehicle_types)
         daily_effects_summary = self.estimate_effects(plotting=True, immediate=False, vehicle_types=vehicle_types)
 
-        figure, axes = plt.subplots(3, 2, figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
+        figure, axes = plt.subplots(1, 6, figsize=figsize, dpi=80, facecolor='w', edgecolor='k')
         figure.tight_layout()
         figure.subplots_adjust(hspace=0.2)
         figure.subplots_adjust(wspace=0.2)
 
         vehicle_labels = list(map(lambda x: x.replace("_", " "), vehicle_types))
+        empty_string_labels = ['']*len(vehicle_labels)
 
         subplot_id = 0
         for phase in self.lockdown_phases.event:
             mean = immediate_effects_summary[phase + "_jump_mean"]
             conf = np.vstack((abs(immediate_effects_summary[phase + "_jump_low"] - mean),
                               abs(immediate_effects_summary[phase + "_jump_high"] - mean)))
-            axes[subplot_id, 0].errorbar(mean, vehicle_labels, xerr=conf, ls='', capsize=5, marker='o')
-            axes[subplot_id, 0].plot([0, 0], [vehicle_labels[0], vehicle_labels[-1]], color='grey')
-            axes[subplot_id, 0].set_xlabel("Immediate effect of " + phase.replace("_", " "))
-            axes[subplot_id, 0].set_xlim(-0.6, 0.4)
+            axes[subplot_id].errorbar(mean, vehicle_labels, xerr=conf, ls='', capsize=5, marker='o')
+            axes[subplot_id].plot([0, 0], [vehicle_labels[0], vehicle_labels[-1]], color='grey')
+            axes[subplot_id].set_xlabel("Immediate effect of " + phase.replace("_", " "))
+            axes[subplot_id].set_xlim(-0.6, 0.4)
             subplot_id = subplot_id + 1
 
-        subplot_id = 0
+        #subplot_id = 0
         for phase in self.lockdown_phases.event:
             mean = daily_effects_summary[phase + "_drift_mean"]
             conf = np.vstack((abs(daily_effects_summary[phase + "_drift_low"] - mean),
                               abs(daily_effects_summary[phase + "_drift_high"] - mean)))
-            axes[subplot_id, 1].errorbar(mean, vehicle_labels, xerr=conf, ls='', capsize=5, marker='o')
-            axes[subplot_id, 1].plot([0, 0], [vehicle_labels[0], vehicle_labels[-1]], color='grey')
-            axes[subplot_id, 1].set_xlabel("Daily effect of " + phase.replace("_", " "))
-            axes[subplot_id, 1].set_xlim(-0.1, 0.1)
+            axes[subplot_id].errorbar(mean, vehicle_labels, xerr=conf, ls='', capsize=5, marker='o')
+            axes[subplot_id].plot([0, 0], [vehicle_labels[0], vehicle_labels[-1]], color='grey')
+            axes[subplot_id].set_xlabel("Daily effect of " + phase.replace("_", " "))
+            axes[subplot_id].set_xlim(-0.1, 0.1)
             subplot_id = subplot_id + 1
+            
+        for i in range(1, 6):
+            axes[i].set_yticklabels(empty_string_labels)
 
         if save:
             figure.savefig(self.figures_directory + 'interrupted_linear_model_parameters.png')

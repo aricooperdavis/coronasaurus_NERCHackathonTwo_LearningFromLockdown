@@ -7,7 +7,7 @@ import datetime
 
 class Emissions():
     
-    def __init__(self, country_co2='./Emissions/UK_CO2Emissions.csv', global_co2='./Emissions/UK_CO2Emissions.csv', sector_co2='./Emissions/globalemissions_sector.csv'):
+    def __init__(self, country_co2='./Emissions/UK_CO2Emissions.csv', global_co2='./Emissions/GlobalDailyCO2.csv', sector_co2='./Emissions/globalemissions_sector.csv'):
         df = pd.read_csv(country_co2, usecols=[2,4])
         df['DATE'] = pd.to_datetime(df['DATE'], format='%d/%m/%Y')
         df['United Kingdom'] = df['United Kingdom'].str.rstrip('%').astype('float')/100
@@ -49,7 +49,7 @@ class Emissions():
 
         bkh.show(p)
         
-    def plot_sector(self, figsize=(600,300), colors=['royalblue', 'firebrick', 'darkgreen', 'gold', 'violet', 'gray']):
+    def plot_sector(self, figsize=(400,300), colors=['royalblue', 'firebrick', 'darkgreen', 'gold', 'violet', 'gray']):
         
         sectors = ['Power', 'Industry', 'Transport', 'Public', 'Residential', 'Aviation']
         suffs = ['', '.1', '.2', '.3', '.4', '.5']

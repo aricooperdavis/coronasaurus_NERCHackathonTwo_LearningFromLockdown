@@ -2,8 +2,8 @@
 Dep. Variable:   ,LCV             ,  R-squared:         ,   0.940
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.935
 Method:          ,Least Squares   ,  F-statistic:       ,   204.9
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,3.17e-53
-Time:            ,20:56:27        ,  Log-Likelihood:    ,  140.76
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,3.17e-53
+Time:            ,10:26:24        ,  Log-Likelihood:    ,  140.76
 No. Observations:,   100          ,  AIC:               ,  -265.5
 Df Residuals:    ,    92          ,  BIC:               ,  -244.7
 Df Model:        ,     7          ,                     ,        

@@ -2,8 +2,8 @@
 Dep. Variable:   ,Tube_London     ,  R-squared:         ,   0.996 
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.996 
 Method:          ,Least Squares   ,  F-statistic:       ,   3167. 
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,1.04e-106
-Time:            ,20:56:29        ,  Log-Likelihood:    ,  255.82 
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,1.04e-106
+Time:            ,09:19:40        ,  Log-Likelihood:    ,  255.82 
 No. Observations:,   100          ,  AIC:               ,  -495.6 
 Df Residuals:    ,    92          ,  BIC:               ,  -474.8 
 Df Model:        ,     7          ,                     ,         

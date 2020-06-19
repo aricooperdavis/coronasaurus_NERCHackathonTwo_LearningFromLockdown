@@ -2,8 +2,8 @@
 Dep. Variable:   ,Cars            ,  R-squared:         ,   0.975
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.973
 Method:          ,Least Squares   ,  F-statistic:       ,   506.5
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,1.54e-70
-Time:            ,20:56:24        ,  Log-Likelihood:    ,  184.29
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,1.54e-70
+Time:            ,09:19:35        ,  Log-Likelihood:    ,  184.29
 No. Observations:,   100          ,  AIC:               ,  -352.6
 Df Residuals:    ,    92          ,  BIC:               ,  -331.7
 Df Model:        ,     7          ,                     ,        

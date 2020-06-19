@@ -2,8 +2,8 @@
 Dep. Variable:   ,Bus_Others      ,  R-squared:         ,   0.994
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.993
 Method:          ,Least Squares   ,  F-statistic:       ,   1847.
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,2.84e-88
-Time:            ,20:56:26        ,  Log-Likelihood:    ,  228.16
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,2.84e-88
+Time:            ,09:19:38        ,  Log-Likelihood:    ,  228.16
 No. Observations:,    91          ,  AIC:               ,  -440.3
 Df Residuals:    ,    83          ,  BIC:               ,  -420.2
 Df Model:        ,     7          ,                     ,        

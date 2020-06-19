@@ -2,8 +2,8 @@
 Dep. Variable:   ,HGV             ,  R-squared:         ,   0.743
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.723
 Method:          ,Least Squares   ,  F-statistic:       ,   38.00
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,1.65e-24
-Time:            ,20:56:25        ,  Log-Likelihood:    ,  97.300
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,1.65e-24
+Time:            ,09:19:36        ,  Log-Likelihood:    ,  97.300
 No. Observations:,   100          ,  AIC:               ,  -178.6
 Df Residuals:    ,    92          ,  BIC:               ,  -157.8
 Df Model:        ,     7          ,                     ,        

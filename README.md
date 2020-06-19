@@ -23,9 +23,18 @@ Despite all the myriad of words, discussions, research and arguments, the Paris 
 
 However, the potential solutions are numerous, highly interconnected and far from simple to implement and achieve. Team Coronasaurus has therefore concentrated on just one strand of a potential solution based upon the real-world experience of the 2020 Covid 19 UK lockdown (March 2020 – to date).
 
-There is not a single household or workplace that the Covid 19 Lockdown did not have an impact upon. Team Coronasaurus examined the effects of the lockdown, seen through publicly available data, to examine how reducing and changing work patterns to incorporate more remote working could contribute towards long term carbon dioxide reduction.
+Lockdown, during the Covid 19 epidemic, forced everyone in the population to radically adapt and change their lifestyle, work and social habits. There is not a single household or workplace that the Covid 19 Lockdown did not have an impact upon. Many of these adaptations were forced upon them through government policy (from closing shops, schools and pubs through to instructing certain people to remain at home and not going outside). However, being human, the actions households and people took were based upon their interpretation, readiness to adapt and willingness to comply with these policies. Going into, but especially coming out of Lockdown, people complied with the rules in their own unique way.
 
-### The data story
+Team Coronasaurus examined the effects of the lockdown, seen through publicly available data, to examine how reducing and changing lifestyle, living arrangements, social interaction and work patterns (to incorporate more remote working) could contribute towards long term carbon dioxide reduction.
+
+    * How well did people conform, adapt and permanently alter their behaviours to this radical situation ?
+
+    * What lessons can be learnt to assist the implement the radical lifestyle changes needed to address Climate Change ?
+
+    * How can society help people to adapt and adjust and even see opportunity in necessary changes ?
+
+## Working
+
 In the period following lockdown on 22 March, well over half of the UK’s workforce remained at home either having been placed on the governments furlough scheme, working remotely from home, having been made redundant or by some other method. This change to the workforce was examined through a proxy measures of transport, energy generation, energy consumption, energy costs and atmospheric emissions. Prior to lockdown, normal life was being conducted and after lockdown, life was limited to staying at home and only going out for essential reasons with the exception of a proportion of the population that continued to work in their place of work.
 
 <center>

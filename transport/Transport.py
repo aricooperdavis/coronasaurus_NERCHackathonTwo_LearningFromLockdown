@@ -8,7 +8,7 @@ from scipy import stats
 from math import ceil
 
 
-def run_diagnostics(data, predictions, model, file_name):
+def run_diagnostics(data, predictions, model, file_name, save=False):
     fig, axs = plt.subplots(2, 2, figsize=(12, 10), dpi=80, facecolor='w', edgecolor='k')
 
     residuals = data - predictions
@@ -38,7 +38,8 @@ def run_diagnostics(data, predictions, model, file_name):
         axs[1, 1].set_xlabel('Fitted Values')
         axs[1, 1].set_title('Scale-Location')
 
-    fig.savefig(file_name)
+    if save:
+        fig.savefig(file_name)
 
     plt.close(fig)
 
@@ -96,7 +97,7 @@ class Traffic:
 
         self.transport = self.transport.merge(weather, left_on='Date', right_on='date')
 
-    def plot_transport_data(self):
+    def plot_transport_data(self, save=False):
 
         fig, ax = plt.subplots(figsize=(10, 8), dpi=80, facecolor='w', edgecolor='k')
         for vehicle in self.vehicle_types:
@@ -107,10 +108,11 @@ class Traffic:
         ax.xaxis.set_major_locator(locator)
         ax.xaxis.set_major_formatter(formatter)
         ax.legend()
-        fig.savefig(self.figures_directory + 'transport_timeline.png')
+        if save:
+            fig.savefig(self.figures_directory + 'transport_timeline.png')
         plt.show()
 
-    def plot_CO2_emissions(self):
+    def plot_CO2_emissions(self, save=False):
 
         filled_transport = self.transport.interpolate().fillna(method='bfill').fillna(method='ffill')
         filled_transport["Bus"] = (filled_transport.Bus_London + filled_transport.Bus_Others) / 2
@@ -150,17 +152,18 @@ class Traffic:
         ax2.axis('equal')
         ax2.set_title('Surface transport emissions in 2019')
 
-        plotted_date = pd.datetime.datetime(2020, 4, 1)
+        plotted_date = pd.Timestamp(year=2020, month=4, day=1)
         plotted_data = transport_emissions.loc[transport_emissions.Date == plotted_date].iloc[:, 1:6].to_numpy()[0]
 
         ax3.pie(plotted_data, labels=emissions_2019.vehicle, autopct='%1.1f%%')
         ax3.axis('equal')
         ax3.set_title('Surface transport emissions on ' + plotted_date.strftime("%d-%b-%Y"))
 
-        fig.savefig(self.figures_directory + 'CO2_emission_timeline.png')
+        if save:
+            fig.savefig(self.figures_directory + 'CO2_emission_timeline.png')
         plt.show()
 
-    def estimate_effects(self, plotting=False, immediate=False, vehicle_types=None):
+    def estimate_effects(self, plotting=False, immediate=False, vehicle_types=None, save=False):
 
         if vehicle_types == None:
             vehicle_types = self.vehicle_types
@@ -220,8 +223,9 @@ class Traffic:
                 effect_name = 'daily'
 
             file_name = self.summary_directory + 'OLS_model_' + effect_name + '_effect_summary_' + vehicle + '.csv'
-            with open(file_name, 'w') as f:
-                f.write(model.summary().as_csv())
+            if save:
+                with open(file_name, 'w') as f:
+                    f.write(model.summary().as_csv())
 
             fill_cells = missing_entries * [np.nan]
             parameters = np.concatenate((model.params, fill_cells, model.bse, fill_cells,
@@ -257,14 +261,15 @@ class Traffic:
                 y = 0
 
         if plotting:
-            figure.savefig(self.figures_directory + 'interrupted_linear_model_result.png')
+            if save:
+                figure.savefig(self.figures_directory + 'interrupted_linear_model_result.png')
             plt.show()
         else:
             plt.close(figure)
 
         return parameters_summary
 
-    def run_interrupted_LM(self, vehicle_types=None):
+    def run_interrupted_LM(self, vehicle_types=None, save=False):
 
         immediate_effects_summary = self.estimate_effects(plotting=False, immediate=True, vehicle_types=vehicle_types)
         daily_effects_summary = self.estimate_effects(plotting=True, immediate=False, vehicle_types=vehicle_types)
@@ -298,10 +303,11 @@ class Traffic:
             axes[subplot_id, 1].set_xlim(-0.1, 0.1)
             subplot_id = subplot_id + 1
 
-        figure.savefig(self.figures_directory + 'interrupted_linear_model_parameters.png')
+        if save:
+            figure.savefig(self.figures_directory + 'interrupted_linear_model_parameters.png')
         plt.show()
 
-    def run_mixed_LM_for_bikes(self):
+    def run_mixed_LM_for_bikes(self, save=False):
 
         self.transport["base_drift"] = (self.transport.Date - self.lockdown_phases.date[0]) / np.timedelta64(1, 'D')
         self.transport["base_drift"] = self.transport["base_drift"].astype(int)
@@ -364,5 +370,6 @@ class Traffic:
         ax[1].plot([0, 0], [covariates[1], covariates[-1]], color='grey')
         ax[1].set_xlabel("Effect of regulation on mobility")
 
-        fig.savefig(self.figures_directory + 'mixed_linear_model_for_cycling.png')
+        if save:
+            fig.savefig(self.figures_directory + 'mixed_linear_model_for_cycling.png')
         plt.show()

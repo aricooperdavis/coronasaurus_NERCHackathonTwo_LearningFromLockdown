@@ -2,8 +2,8 @@
 Dep. Variable:   ,Cycling         ,  R-squared:         ,   0.307
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.249
 Method:          ,Least Squares   ,  F-statistic:       ,   5.317
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,4.63e-05
-Time:            ,20:56:27        ,  Log-Likelihood:    , -86.051
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,4.63e-05
+Time:            ,09:19:38        ,  Log-Likelihood:    , -86.051
 No. Observations:,    92          ,  AIC:               ,   188.1
 Df Residuals:    ,    84          ,  BIC:               ,   208.3
 Df Model:        ,     7          ,                     ,        

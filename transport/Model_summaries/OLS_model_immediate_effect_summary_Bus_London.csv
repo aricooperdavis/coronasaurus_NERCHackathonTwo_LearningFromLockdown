@@ -3,7 +3,7 @@ Dep. Variable:   ,Bus_London      ,  R-squared:         ,   0.995
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.995
 Method:          ,Least Squares   ,  F-statistic:       ,   1791.
 Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,1.04e-48
-Time:            ,09:19:37        ,  Log-Likelihood:    ,  113.96
+Time:            ,10:26:23        ,  Log-Likelihood:    ,  113.96
 No. Observations:,    49          ,  AIC:               ,  -215.9
 Df Residuals:    ,    43          ,  BIC:               ,  -204.6
 Df Model:        ,     5          ,                     ,        

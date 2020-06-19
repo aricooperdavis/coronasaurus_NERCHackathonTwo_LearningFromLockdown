@@ -2,8 +2,8 @@
 Dep. Variable:   ,All_motor       ,  R-squared:         ,   0.963
 Model:           ,OLS             ,  Adj. R-squared:    ,   0.960
 Method:          ,Least Squares   ,  F-statistic:       ,   342.7
-Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,5.47e-63
-Time:            ,20:56:28        ,  Log-Likelihood:    ,  167.49
+Date:            ,Fri, 19 Jun 2020,  Prob (F-statistic):,5.47e-63
+Time:            ,09:19:40        ,  Log-Likelihood:    ,  167.49
 No. Observations:,   100          ,  AIC:               ,  -319.0
 Df Residuals:    ,    92          ,  BIC:               ,  -298.1
 Df Model:        ,     7          ,                     ,        

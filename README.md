@@ -3,6 +3,7 @@
 This repository is coronasaurus's entry to NERC's [COVID-19 Hackathon 2: Recovery](https://digitalenvironment.org/home/covid-19-digital-sprint-hackathons/covid-19-hackathon-2-recovery/).
 
 # Executive Summary
+<b>The Covid 19 pandemic and subsequent lockdown effected every person and household in the United Kingdom. Work, social habits, family relationships, lesuire activities, in fact, absolutly everything was altered and these dramatic changes had an major impact on the economy, environment and society as a whole. By examining these changes, as captured by publically availible data, trends and lessons were looked for which could be used to help tackle the even greater looming crisis of Climate Change. Whilst there will be may parts to the solution, the thread looked at by Team Coronasaurus was a changing working patterns to embrace more home working which achieved a reduction in UK CO2 emmissions by XX %.</b>
 
 ## Introduction
 The unprecedented global response to the COVID-19 pandemic has resulted in huge population behavioural changes; from the cessation of travel to a transition to remote working. We don't often see changes of this magnitude, which offers researchers the unique opportunity to evaluate the impact of lockdown measures.
@@ -34,9 +35,11 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 ### Team Coronasaurus Contributors
 
+Cristina Corti - https://www.linkedin.com/in/cristina-corti-09a5b3137/?originalSubdomain=uk
 Ari Cooper-Davies - https://www.cooper-davis.net/
+Mikkel Lykkegaard - http://emps.exeter.ac.uk/engineering/staff/ml624
+Piotr Morawiecki - https://people.bath.ac.uk/pwm27/
 James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
-
 
 ### Folders, Files and Directories
 

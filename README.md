@@ -23,7 +23,7 @@ This is an entry for [COVID-19 Hackathon 2: Recovery](https://digitalenvironment
 
 Team Coronasaurus examined the effects of the lockdown, seen through publicly available data (UK government, NERC, etc), to examine the effects of the UK populations changes in lifestyle, living arrangements, social interaction and work patterns both going into and out of lockdown could be "read across" towards long term carbon dioxide reduction and climate change mitigation. The "read across" was examined to answer the question "What climate change effects could be achieved if the UK's working population made changes to their working hours and working location?". 
 
-In short, Team Coronasaurus has been examining if a 4 day working week (with potentially longer days and including 2 days home working) would help reduce UK $CO_2$ emissions and help mitigate climate change?   
+In short, Team Coronasaurus has been examining if a 4 day working week (with potentially longer days and including 2 days home working) would help reduce UK CO<sub>2</sub> emissions and help mitigate climate change?   
 
 ### Presentation
 

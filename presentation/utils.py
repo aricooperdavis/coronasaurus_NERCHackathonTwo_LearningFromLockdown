@@ -1,5 +1,22 @@
+from notebook import notebookapp
+from IPython.display import display, Markdown, HTML
+
 import pandas as pd
 from bokeh.plotting import figure, output_notebook, show
+
+def server_probe():
+
+    servers = list(notebookapp.list_running_servers())
+    
+    if servers[0]['hostname'] == 'localhost':
+    
+        display(Markdown(
+            """You're currently viewing this notebook locally. You could also run it online in an interactive binder by clicking below:\\
+            [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Flab%2Fcoronasaurus.ipynb)"""))
+    else:
+        display(Markdown(
+            """You're currently viewing this notebook remotely.
+            You can also [download this notebook](https://github.com/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/blob/master/coronasaurus.ipynb) and run it locally in Jupyter."""))
 
 class EmissionsData:
     def __init__(self, input_file):

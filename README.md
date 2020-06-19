@@ -19,7 +19,9 @@ This is an entry for [COVID-19 Hackathon 2: Recovery](https://digitalenvironment
 
 ### Our Approach
 
-Team Coronasaurus examined the effects of the lockdown, seen through publicly available data, to examine the effects of the UK populations changes in lifestyle, living arrangements, social interaction and work patterns both going into and out of lockdown could be "read across" towards long term carbon dioxide reduction and climate change mitigation.
+Team Coronasaurus examined the effects of the lockdown, seen through publicly available data (UK government, NERc, etc), to examine the effects of the UK populations changes in lifestyle, living arrangements, social interaction and work patterns both going into and out of lockdown could be "read across" towards long term carbon dioxide reduction and climate change mitigation. The "read across" was examined to answer the question "What climate change effects could be achieved if the UK's working population made changes to their working hours and working location ?". 
+
+In short, Team Coronasaurus has been examining if a 4 day working week (with potentially longer days and including 2 days home working) would help reduce UK CO2 and help mitigate climate change ?   
 
 ### Presentation
 
@@ -30,3 +32,16 @@ You can "play along" online with our analysis using our interactive binder noteb
 
 ### Folders, Files and Directories
 
+Timeline 	
+timeline/ - data, code and output files showing important events during the Covid 19 pandemic.
+
+<b>Transport</b>
+transport/ - includes data sets, codes and output files and figures related to the effect of lockdown on traffic volume.
+transport/Traffic.py - includes class Traffic, which allow to import data and analyse them (see notebook).
+Transport/Figures - includes output figures produced by Traffic class methods
+Transport/Model_diagnostics - includes output graphs allowing to diagnose the interrupted linear models implemented in Traffic class
+Transport/Summary - includes csv files with summary of the interrupted linear models implemented in Traffic class (summary consist the goodness of fit and credibility intervals for all model parameters)
+Transport/UK_transport.csv - includes traffic volume data for different modes of transport from https://www.gov.uk/government/statistics/transport-use-during-the-coronavirus-covid-19-pandemic.
+Transport/UK_weather.csv - includes daily weather data from:
+https://www.accuweather.com/en/gb/london/ec4a-2/january-weather/328328 (daily data)
+https://www.statista.com/statistics/322658/monthly-average-daily-temperatures-in-the-united-kingdom-uk/ (monthly averages)

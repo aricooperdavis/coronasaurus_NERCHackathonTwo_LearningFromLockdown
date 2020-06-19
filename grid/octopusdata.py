@@ -6,15 +6,20 @@ import matplotlib.dates as mdates
 
 import datetime
 
+import bokeh.plotting as bkh
+import bokeh.models as bkm
+
 class OctopusData:
     def __init__(self, data_file, weather_file=None):
         self.energy = pd.read_csv(data_file).rename(columns={'Unnamed: 0': 'Date'})
         self.energy['Date'] = pd.to_datetime(self.energy['Date'], format='%Y-%m-%d %H:%M:%S')
         self.energy['Date_'] = self.energy.Date.dt.date
         
-        self.energy_average = self.energy.groupby('Date_').agg(electricity_daily_total = pd.NamedAgg('Electricity', np.sum),
-                                                               gas_daily_total = pd.NamedAgg('Gas (corrected)', np.sum)).reset_index()
+        self.energy_average = self.energy.groupby('Date_').agg(electricity_daily_total = pd.NamedAgg('Electricity', 'sum'),
+                                                               gas_daily_total = pd.NamedAgg('Gas (corrected)', 'sum')).reset_index()
         self.energy_average.drop(self.energy_average.tail(1).index, inplace=True)
+        cols = ['electricity_daily_total','gas_daily_total']
+        self.energy_average[cols] = self.energy_average[cols].replace({0.0: np.nan})
         
         if weather_file:
             weather = pd.read_csv(weather_file)
@@ -32,6 +37,22 @@ class OctopusData:
         ax = self.energy.plot('Date', ['Electricity', 'Gas (corrected)'], figsize=figsize)
         ax.set_ylabel('kWh')
         plt.show()
+        
+    def plot_timeline_bkh(self, figsize=(600,300)):
+        p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
+        
+        p.line(x=self.energy['Date'],
+               y=self.energy['Electricity'], color='royalblue', legend_label='Electricity')
+        p.line(x=self.energy['Date'],
+               y=self.energy['Gas (corrected)'], color='orange', legend_label='Gas (corrected)')
+        
+        p.yaxis.axis_label = 'kWh'
+        p.xaxis.axis_label = 'Date'
+        
+        p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
+
+        bkh.output_notebook()
+        bkh.show(p)
 
     def plot_daily_electricity(self, figsize=(24,8), plot_temperature=False, colors=['k', 'darkturquoise']):
         locator = mdates.AutoDateLocator(minticks=6, maxticks=12)
@@ -39,7 +60,7 @@ class OctopusData:
         
         fig, ax1 = plt.subplots(figsize=figsize)
 
-        electricity_mean = ax1.plot(self.energy_average['Date_'], 10*np.ones(len(self.energy_average)), c=colors[0], linestyle='dashed', linewidth=2)
+        electricity_mean = ax1.plot(self.energy_average['Date_'], 12*np.ones(len(self.energy_average)), c=colors[0], linestyle='dashed', linewidth=2)
         electricity = ax1.plot(self.energy_average['Date_'], self.energy_average['electricity_daily_total'], c=colors[0], linewidth=2)
         
         ax1.tick_params(axis='y', labelcolor=colors[0])
@@ -55,15 +76,50 @@ class OctopusData:
             
             ax2.tick_params(axis='y', labelcolor=colors[1])
             
-            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['electricity_daily_total'], self.energy_average['temperature'])[0,1]), 
+            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]), 
                      ha='center', va='center', transform=ax2.transAxes)
             
-            plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (high)', 'Temperature'], loc=1)
+            plt.legend([electricity[0], electricity_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)', 'Temperature'], loc=1)
         else:
-            plt.legend([electricity[0], electricity_mean[0]], ['Mean of 115 000 UK households', 'Typical domestic use (high)'], loc=1)
+            plt.legend([electricity[0], electricity_mean[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)'], loc=1)
             
         fig.tight_layout()
         plt.show()
+        
+    def plot_daily_electricity_bkh(self, figsize=(650,450), plot_temperature=False, colors=['black', 'darkturquoise']):
+        p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
+
+        p.line(x=self.energy_average['Date_'], y=12*np.ones(len(self.energy_average)), line_dash='dashed', line_color=colors[0], legend_label='Typical domestic use')
+        
+        p.line(x=self.energy_average['Date_'], y=self.energy_average['electricity_daily_total'], line_color=colors[0], legend_label='Mean of 115,000 UK households')
+        
+        p.xaxis.axis_label='Date'
+        p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
+        
+        p.y_range=bkm.Range1d(9, 17)
+        p.yaxis.axis_label='Electricity Consumption (kWh)'
+        p.yaxis.axis_label_text_color = colors[0]
+        
+        if plot_temperature and self.weather_file:
+            p.extra_y_ranges = {'temperature': bkm.Range1d(start=6, end=24)}
+            
+            p.line(x=self.energy_average['Date_'],
+                   y=self.energy_average['temperature'],
+                   line_color=colors[1], legend_label='Temperature', y_range_name='temperature')
+            
+            p.add_layout(bkm.LinearAxis(y_range_name='temperature', axis_label='Mean Temperature (°C)',
+                                        axis_label_text_color=colors[1], axis_line_color=colors[1],
+                                        major_label_text_color=colors[1], major_tick_line_color=colors[1],
+                                        minor_tick_line_color=colors[1]
+                                       ), 'right')
+            
+            r = self.energy_average[['electricity_daily_total', 'temperature']].corr(method='pearson').values[1,0]
+            p.legend.title = f'R = {r:.3f}'
+            p.legend.location = 'top_left'
+            p.legend.background_fill_alpha = 1.0
+            
+        bkh.output_notebook()
+        bkh.show(p)
         
     def plot_daily_gas(self, figsize=(24,8), plot_temperature=False, colors=['k', 'darkturquoise']):
         locator = mdates.AutoDateLocator(minticks=6, maxticks=12)
@@ -87,7 +143,7 @@ class OctopusData:
             
             ax2.tick_params(axis='y', labelcolor=colors[1])
             
-            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(np.corrcoef(self.energy_average['gas_daily_total'], self.energy_average['temperature'])[0,1]), 
+            plt.text(0.05, 0.9, 'R = {0:.3f}'.format(self.energy_average[['gas_daily_total', 'temperature']].corr(method='pearson').values[1,0]), 
                      ha='center', va='center', transform=ax2.transAxes)
             
             plt.legend([gas[0], gas_mean[0], temp[0]], ['Mean of 115 000 UK households', 'Typical domestic use (medium)', 'Temperature'], loc=1)
@@ -96,3 +152,38 @@ class OctopusData:
             
         fig.tight_layout()
         plt.show()
+
+    def plot_daily_gas_bkh(self, figsize=(650,450), plot_temperature=False, colors=['black', 'darkturquoise']):
+        p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
+
+        p.line(x=self.energy_average['Date_'], y=32*np.ones(len(self.energy_average)), line_dash='dashed', line_color=colors[0], legend_label='Typical domestic use (medium)')
+        
+        p.line(x=self.energy_average['Date_'], y=self.energy_average['gas_daily_total'], line_color=colors[0], legend_label='Mean of 115,000 UK households')
+        
+        p.xaxis.axis_label='Date'
+        p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
+        
+        p.y_range=bkm.Range1d(15, 70)
+        p.yaxis.axis_label='Gas Consumption (Corrected) (kWh/ALP)'
+        p.yaxis.axis_label_text_color = colors[0]
+        
+        if plot_temperature and self.weather_file:
+            p.extra_y_ranges = {'temperature': bkm.Range1d(start=6, end=24)}
+            
+            p.line(x=self.energy_average['Date_'],
+                   y=self.energy_average['temperature'],
+                   line_color=colors[1], legend_label='Temperature', y_range_name='temperature')
+            
+            p.add_layout(bkm.LinearAxis(y_range_name='temperature', axis_label='Mean Temperature (°C)',
+                                        axis_label_text_color=colors[1], axis_line_color=colors[1],
+                                        major_label_text_color=colors[1], major_tick_line_color=colors[1],
+                                        minor_tick_line_color=colors[1]
+                                       ), 'right')
+            
+            r = self.energy_average[['gas_daily_total', 'temperature']].corr(method='pearson').values[1,0]
+            p.legend.title = f'R = {r:.3f}'
+            p.legend.location = 'top_left'
+            p.legend.background_fill_alpha = 1.0
+            
+        bkh.output_notebook()
+        bkh.show(p)

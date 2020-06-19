@@ -1,0 +1,26 @@
+                      OLS Regression Results                      
+Dep. Variable:   ,National_rail   ,  R-squared:         ,   0.996 
+Model:           ,OLS             ,  Adj. R-squared:    ,   0.996 
+Method:          ,Least Squares   ,  F-statistic:       ,   3324. 
+Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,1.14e-107
+Time:            ,20:56:25        ,  Log-Likelihood:    ,  245.60 
+No. Observations:,   100          ,  AIC:               ,  -475.2 
+Df Residuals:    ,    92          ,  BIC:               ,  -454.4 
+Df Model:        ,     7          ,                     ,         
+Covariance Type: ,nonrobust       ,                     ,         
+                        ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+Intercept               ,    0.9908,    0.012,   84.320, 0.000,    0.967,    1.014
+base_drift              ,    0.0033,    0.002,    1.836, 0.070,   -0.000,    0.007
+first_restrictions_jump ,    0.0416,    0.018,    2.276, 0.025,    0.005,    0.078
+first_restrictions_drift,   -0.0752,    0.003,  -27.414, 0.000,   -0.081,   -0.070
+national_lockdown_jump  ,   -0.1579,    0.014,  -11.553, 0.000,   -0.185,   -0.131
+national_lockdown_drift ,    0.0709,    0.002,   34.174, 0.000,    0.067,    0.075
+lockdown_easing_jump    ,    0.0264,    0.011,    2.495, 0.014,    0.005,    0.047
+lockdown_easing_drift   ,    0.0023,    0.001,    3.879, 0.000,    0.001,    0.004
+Omnibus:      ,74.339,  Durbin-Watson:     ,   0.582 
+Prob(Omnibus):, 0.000,  Jarque-Bera (JB):  , 538.242 
+Skew:         , 2.344,  Prob(JB):          ,1.32e-117
+Kurtosis:     ,13.354,  Cond. No.          ,    757. 
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

@@ -1,0 +1,24 @@
+                      OLS Regression Results                     
+Dep. Variable:   ,Bus_London      ,  R-squared:         ,   0.995
+Model:           ,OLS             ,  Adj. R-squared:    ,   0.995
+Method:          ,Least Squares   ,  F-statistic:       ,   1791.
+Date:            ,Thu, 18 Jun 2020,  Prob (F-statistic):,1.04e-48
+Time:            ,20:56:29        ,  Log-Likelihood:    ,  113.96
+No. Observations:,    49          ,  AIC:               ,  -215.9
+Df Residuals:    ,    43          ,  BIC:               ,  -204.6
+Df Model:        ,     5          ,                     ,        
+Covariance Type: ,nonrobust       ,                     ,        
+                        ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+Intercept               ,    0.9267,    0.014,   67.607, 0.000,    0.899,    0.954
+base_drift              ,   -0.0050,    0.002,   -2.369, 0.022,   -0.009,   -0.001
+first_restrictions_jump ,    0.0401,    0.021,    1.879, 0.067,   -0.003,    0.083
+first_restrictions_drift,   -0.0545,    0.003,  -17.011, 0.000,   -0.061,   -0.048
+national_lockdown_jump  ,   -0.7324,    0.030,  -24.286, 0.000,   -0.793,   -0.672
+national_lockdown_drift ,    0.0046,    0.002,    2.064, 0.045,    0.000,    0.009
+Omnibus:      , 0.690,  Durbin-Watson:     ,   1.418
+Prob(Omnibus):, 0.708,  Jarque-Bera (JB):  ,   0.192
+Skew:         , 0.108,  Prob(JB):          ,   0.908
+Kurtosis:     , 3.218,  Cond. No.          ,    196.
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

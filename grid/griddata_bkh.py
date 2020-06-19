@@ -2,13 +2,9 @@ import pickle
 
 import numpy as np
 import pandas as pd
-import datetime
-
-import seaborn as sns
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 
 import bokeh.plotting as bkh
+import bokeh.models as bkm
 
 class GridData:
     def __init__(self, grid_file):
@@ -38,24 +34,6 @@ class GridData:
         
     def get_data_average(self):
         return self.grid_average
-        
-    def plot_demand(self, collapse=True, figsize=(16,8), color='k'):
-        
-        plt.figure(figsize=figsize)
-        
-        if collapse:
-            for year in np.unique(self.grid_average.YEAR.values):
-                plt.plot(self.grid_average.DOY[self.grid_average.YEAR.values==year], 
-                         self.grid_average.DEMAND_AVERAGE[self.grid_average.YEAR.values==year], linewidth=2, alpha=0.9, label=str(year))
-            plt.xlabel('Day of the Year'), plt.ylabel('Demand (MW)')
-            plt.legend()
-        
-        else:
-            plt.plot(self.grid_average.DATE, self.grid_average.DEMAND_AVERAGE, c=color)
-            plt.xlabel('Year'), plt.ylabel('Demand (MW)')
-        
-        plt.tight_layout()
-        plt.show()
         
     def plot_demand_bkh(self, collapse=True, color='black', figsize=(600,300)):
         p = bkh.figure(x_axis_type='datetime', plot_width=figsize[0], plot_height=figsize[1])
@@ -129,26 +107,6 @@ class GridData:
         
         # Predict the datapoints after the lockdown.
         self.Y_COVID_PREDICT_mean, self.Y_COVID_PREDICT_conf = self.output_dict['Y_COVID_PREDICT_mean'], self.output_dict['Y_COVID_PREDICT_conf']
-    
-    def plot_model(self, figsize=(16,8)):
-        
-        plt.figure(figsize=figsize)
-        
-        plt.fill_between(self.X_PREDICT.flatten(), 
-                        (self.Y_PREDICT_mean-self.Y_PREDICT_conf).flatten(), 
-                        (self.Y_PREDICT_mean+self.Y_PREDICT_conf).flatten(), alpha=0.2, label='Confidence')
-        
-        plt.plot(self.X_PREDICT, self.Y_PREDICT_mean, label='Mean')
-        
-        plt.scatter(self.X[:self.COVID_CUTOFF], self.Y[:self.COVID_CUTOFF], c='k', marker='x', alpha=0.5, label='Before Lockdown')
-        
-        plt.scatter(self.X[self.COVID_CUTOFF:], self.Y[self.COVID_CUTOFF:], c='red', marker='x', alpha=0.5, label='After Lockdown')
-        
-        plt.xlabel('Year'); plt.ylabel('Net Demand (GW)')
-        plt.xticks(np.arange(self.forecast_limit+1), np.arange(self.forecast_limit+1)+2015)
-        plt.legend()
-        plt.tight_layout()
-        plt.show()
         
     def plot_model_bkh(self, figsize=(600,300)):
         
@@ -171,25 +129,21 @@ class GridData:
         bkh.output_notebook()
         bkh.show(p)
         
+    def plot_demand_discrepancy_bkh(self, figsize=(600,300), plot_confidence=True):
         
-    def plot_demand_discrepancy(self, figsize=(16,8), plot_confidence=True):
-        
-        locator = mdates.AutoDateLocator(minticks=6, maxticks=12)
-        formatter = mdates.ConciseDateFormatter(locator)
-        
-        fig, ax = plt.subplots(figsize=figsize)
+        p = bkh.figure(plot_width=figsize[0], plot_height=figsize[1], x_axis_type='datetime')
 
         if plot_confidence:
-            conf_min = self.Y_COVID.flatten()/(self.Y_COVID_PREDICT_mean.flatten()+self.Y_COVID_PREDICT_conf.flatten())
-            conf_max = self.Y_COVID.flatten()/(self.Y_COVID_PREDICT_mean.flatten()-self.Y_COVID_PREDICT_conf.flatten())
-            plt.fill_between(self.grid_average.DATE[self.COVID_CUTOFF:], conf_min, conf_max, alpha=0.2, label='Confidence')
+            p.varea(x=self.grid_average.DATE[self.COVID_CUTOFF:], y1=(self.Y_COVID.flatten()/(self.Y_COVID_PREDICT_mean.flatten()+self.Y_COVID_PREDICT_conf.flatten())).flatten(),
+                    y2=(self.Y_COVID.flatten()/(self.Y_COVID_PREDICT_mean.flatten()-self.Y_COVID_PREDICT_conf.flatten())).flatten(), alpha=0.2, legend_label='Confidence')
         
-        ax.plot(self.grid_average.DATE[self.COVID_CUTOFF:], np.ones(len(self.grid_average.DATE[self.COVID_CUTOFF:])), c='k', linestyle='dotted')
-        ax.plot(self.grid_average.DATE[self.COVID_CUTOFF:], self.Y_COVID.flatten()/self.Y_COVID_PREDICT_mean.flatten(), c='k', label='Mean')
+        p.line(x=self.grid_average.DATE[self.COVID_CUTOFF:], y=np.ones(len(self.grid_average.DATE[self.COVID_CUTOFF:])), line_dash='dashed', color='black')
+        p.line(x=self.grid_average.DATE[self.COVID_CUTOFF:], y=self.Y_COVID.flatten()/self.Y_COVID_PREDICT_mean.flatten(), legend_label='Mean')
+
+        p.xaxis.axis_label = 'Date'
+        p.xaxis[0].formatter = bkm.DatetimeTickFormatter(days=['%d/%m'])
         
-        ax.xaxis.set_major_locator(locator)
-        ax.xaxis.set_major_formatter(formatter)
-        ax.set_xlabel('Date'); ax.set_ylabel('$\\frac{Net \\: Demand \\: (True)}{Net \\: Demand \\: (Expected)}$')
-        plt.legend()
-        plt.tight_layout()
-        plt.show()
+        p.yaxis.axis_label = 'Net Demand (True) / Net Demand (Expected)'
+
+        bkh.output_notebook()
+        bkh.show(p)

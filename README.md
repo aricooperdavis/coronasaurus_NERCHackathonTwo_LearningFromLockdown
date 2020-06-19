@@ -31,6 +31,8 @@ In short, Team Coronasaurus has been examining if a 4 day working week (with pot
 ### Watch our Presentation
 You can [watch our presentation on YouTube](https://youtu.be/s0e5wG3_MOM) where we'll talk through our strategy, the analysis we performed, and the figures we made.
 
+[![/presentation/watch-on-youtube.png]](https://youtu.be/s0e5wG3_MOM)
+
 ### Interactive notebook
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Ftree%2Fcoronasaurus.ipynb)
 

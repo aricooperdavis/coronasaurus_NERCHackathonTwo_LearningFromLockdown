@@ -55,7 +55,7 @@ class GridData:
             
         p.yaxis.axis_label = 'Demand (MW)'
         
-        bkh.output_notebook()
+        #bkh.output_notebook()
         bkh.show(p)
         
         
@@ -126,7 +126,7 @@ class GridData:
         p.xaxis.axis_label = 'Year'
         p.yaxis.axis_label = 'Net Demand (GW)'
         
-        bkh.output_notebook()
+        #bkh.output_notebook()
         bkh.show(p)
         
     def plot_demand_discrepancy_bkh(self, figsize=(600,300), plot_confidence=True):
@@ -145,5 +145,5 @@ class GridData:
         
         p.yaxis.axis_label = 'Net Demand (True) / Net Demand (Expected)'
 
-        bkh.output_notebook()
+        #bkh.output_notebook()
         bkh.show(p)

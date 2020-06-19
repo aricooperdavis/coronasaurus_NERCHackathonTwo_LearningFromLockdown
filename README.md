@@ -26,7 +26,7 @@ Team Coronasaurus examined the effects of the lockdown, seen through publicly av
 
 In short, Team Coronasaurus has been examining if a 4 day working week (with potentially longer days and including 2 days home working) would help reduce UK CO<sub>2</sub> emissions and help mitigate climate change?   
 
-### Presentation
+# Presentation
 
 ### Interactive notebook
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Ftree%2Fcoronasaurus.ipynb)

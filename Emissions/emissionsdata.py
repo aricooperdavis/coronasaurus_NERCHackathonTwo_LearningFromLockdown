@@ -7,15 +7,15 @@ import datetime
 
 class Emissions():
     
-    def __init__(self, country_co2='UK_CO2Emissions.csv'):
-        df = pd.read_csv('UK_CO2Emissions.csv', usecols=[2,4])
+    def __init__(self, country_co2='./Emissions/UK_CO2Emissions.csv', global_co2='./Emissions/UK_CO2Emissions.csv', sector_co2='./Emissions/globalemissions_sector.csv'):
+        df = pd.read_csv(country_co2, usecols=[2,4])
         df['DATE'] = pd.to_datetime(df['DATE'], format='%d/%m/%Y')
         df['United Kingdom'] = df['United Kingdom'].str.rstrip('%').astype('float')/100
         self.country_co2 = df
         
-        self.global_co2 = pd.read_csv('GlobalDailyCO2.csv',skiprows=4)
+        self.global_co2 = pd.read_csv(global_co2, skiprows=4)
         
-        df = pd.read_csv('globalemissions_sector.csv',skiprows=4)[:163]
+        df = pd.read_csv(sector_co2, skiprows=4)[:163]
         df['Date_'] = pd.to_datetime(df['date'], format='%d/%m/%Y')
         self.sector_co2 = df
         

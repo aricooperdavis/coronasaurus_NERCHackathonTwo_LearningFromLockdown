@@ -2,6 +2,8 @@
 
 This repository is coronasaurus's entry to NERC's [COVID-19 Hackathon 2: Recovery](https://digitalenvironment.org/home/covid-19-digital-sprint-hackathons/covid-19-hackathon-2-recovery/).
 
+# Executive Summary
+
 ## Introduction
 The unprecedented global response to the COVID-19 pandemic has resulted in huge population behavioural changes; from the cessation of travel to a transition to remote working. We don't often see changes of this magnitude, which offers researchers the unique opportunity to evaluate the impact of lockdown measures.
 
@@ -29,6 +31,11 @@ In short, Team Coronasaurus has been examining if a 4 day working week (with pot
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Ftree%2Fcoronasaurus.ipynb)
 
 You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can download the notebook and run it locally using `jupyter`.
+
+### Team Coronasaurus Contributors
+
+Ari Cooper-Davies - https://www.cooper-davis.net/
+James Rand - https://researchportal.bath.ac.uk/en/persons/james-rand
 
 
 ### Folders, Files and Directories

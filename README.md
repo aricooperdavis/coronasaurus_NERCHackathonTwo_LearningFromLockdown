@@ -21,21 +21,26 @@ This is an entry for [COVID-19 Hackathon 2: Recovery](https://digitalenvironment
 
 Team Coronasaurus examined the effects of the lockdown, seen through publicly available data (UK government, NERc, etc), to examine the effects of the UK populations changes in lifestyle, living arrangements, social interaction and work patterns both going into and out of lockdown could be "read across" towards long term carbon dioxide reduction and climate change mitigation. The "read across" was examined to answer the question "What climate change effects could be achieved if the UK's working population made changes to their working hours and working location ?". 
 
-In short, Team Coronasaurus has been examining if a 4 day working week (with potentially longer days and including 2 days home working) would help reduce UK CO2 and help mitigate climate change ?   
+In short, Team Coronasaurus has been examining if a 4 day working week (with potentially longer days and including 2 days home working) would help reduce UK CO₂ and help mitigate climate change ?   
 
 ### Presentation
 
-### Interactive notebook
+TODO: Link to youtube video.
+
+### Interactive notebooks
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aricooperdavis/coronasaurus_NERCHackathonTwo_Multivariate/master?urlpath=%2Ftree%2Fcoronasaurus.ipynb)
 
-You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can download the notebook and run it locally using `jupyter`.
+You can "play along" online with our analysis using our interactive binder notebook - just click the link above and it'll be served for you. Alternatively, you can clone the repository and open `coronasaurus.ipynb` using `jupyter lab`.
+
+### Read as a PDF
+If you'd prefer a hard copy, you can read the PDF of our notebook here. TODO: Link to PDF
 
 ### Folders, Files and Directories
 
 <b>Emissions</b>
-> - Emissions/ - CO2 emmissions data over lockdown period
-> - Emissions/Figures_CO2.ipynb  - notebook analysing atmospheric CO2 during Covid 19 pandemic
-> - Emissions/...csv - atmospheric CO2 data from:
+> - Emissions/ - CO₂ emmissions data over lockdown period
+> - Emissions/Figures_CO2.ipynb  - notebook analysing atmospheric CO₂ during Covid 19 pandemic
+> - Emissions/...csv - atmospheric CO₂ data from:
 
 >Quere et al (2020) https://www.nature.com/articles/s41558-020-0797-x
 
